@@ -1,0 +1,18 @@
+<?php
+function encryptData($data, $key) {
+    $cipher = "aes-256-cbc";
+    $ivLength = openssl_cipher_iv_length($cipher);
+    $iv = openssl_random_pseudo_bytes($ivLength);
+    $encrypted = openssl_encrypt($data, $cipher, $key, OPENSSL_RAW_DATA, $iv);
+    return base64_encode($iv . $encrypted);
+}
+
+function decryptData($data, $key) {
+    $cipher = "aes-256-cbc";
+    $data = base64_decode($data);
+    $ivLength = openssl_cipher_iv_length($cipher);
+    $iv = substr($data, 0, $ivLength);
+    $encrypted = substr($data, $ivLength);
+    return openssl_decrypt($encrypted, $cipher, $key, OPENSSL_RAW_DATA, $iv);
+}
+?>
