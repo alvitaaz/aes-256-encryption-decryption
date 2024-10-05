@@ -4,7 +4,7 @@ include 'db.php';
 if (isset($_SESSION['username'])) {
     $username = $_SESSION['username'];
 
-    // untuk menghindari SQL Injection
+    // buat ngehindarin SQL Injection
     $stmt = $conn->prepare("SELECT * FROM activity_log WHERE username = ? ORDER BY timestamp DESC");
     if ($stmt === false) {
         die('Prepare failed: ' . htmlspecialchars($conn->error));
@@ -25,7 +25,7 @@ if (isset($_SESSION['username'])) {
             $timestamp = htmlspecialchars($row['timestamp']) ?? 'N/A';
             $username = htmlspecialchars($row['username']) ?? 'N/A';
             $activity_description = htmlspecialchars($row['action']) ?? 'N/A';
-            $filename = htmlspecialchars($row['filename']) ?? 'N/A'; // Tambahkan ini
+            $filename = htmlspecialchars($row['filename']) ?? 'N/A'; 
             echo "<tr><td>{$timestamp}</td><td>{$username}</td><td>{$activity_description}</td><td>{$filename}</td></tr>";
         }
         echo "</tbody></table>";
