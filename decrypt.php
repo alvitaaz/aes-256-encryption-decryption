@@ -24,7 +24,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
             // Write the decrypted file to disk
             file_put_contents($decryptedFileName, $decryptedData);
 
-            // Log decryption activity with the original file name
+            // Log decryption activity dengan the original file name
             logActivity($username, 'decryption', $file['name']);
 
             echo '<div class="alert alert-success">
