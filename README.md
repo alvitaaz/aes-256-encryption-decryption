@@ -11,6 +11,6 @@ This web application allows users to register, log in, and manage files with enc
 
 # Prerequisites
 * **Local Server:** XAMPP.
-* **PHP:** Version 7.2 or newer.
+* **PHP:** Version 8.0.30.
 * **MySQL:** MySQL database to store user data and activity logs.
 
